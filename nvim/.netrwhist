@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/pepino/Documents/projects/test'
+let g:netrw_dirhist_2='/home/pepino/.config/nvim'
+let g:netrw_dirhist_3='/home/pepino/.config/nvim/bundle'
+let g:netrw_dirhist_4='/home/pepino/.config/nvim'
+let g:netrw_dirhist_5='/home/pepino/.config/nvim/bundle'
+let g:netrw_dirhist_6='/home/pepino/.config/nvim'
