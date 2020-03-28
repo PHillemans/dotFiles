@@ -13,7 +13,7 @@ if [ $res = "logout" ]; then
     i3-msg exit
 fi
 if [ $res = "suspend" ]; then
-    i3lock -i ~/Pictures/index.png && systemctl suspend
+    i3lock -t -i ~/Pictures/index.png && systemctl suspend
 fi
 if [ $res = "restart" ]; then
     systemctl reboot

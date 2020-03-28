@@ -1,7 +1,6 @@
-cp ~/.config/i3 ./.config/
-cp ~/.config/rofi ./.config
-cp ~/.config/polybar ./.config
-cp ~/.config/powermenu ./.config
-cp ~/.config/nvim ./.config
-cp ~/.config/kitty/kitty.conf ./.config
-
+cp -r ~/.config/i3 ./.config/
+cp -r ~/.config/rofi ./.config
+cp -r ~/.config/polybar ./.config
+cp -r ~/.config/powermenu ./.config
+cp -r ~/.config/nvim ./.config
+cp -r ~/.config/kitty/kitty.conf ./.config

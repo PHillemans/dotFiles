@@ -13,7 +13,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 echo "copying dotfiles to config directory"
 cp -rf ./* ~/.config
 
-rm ~./config/install.sh
+rm ~/install.sh
+rm ~/updateRepo.sh
 
 nvim +PlugInstall +:qa!
 
