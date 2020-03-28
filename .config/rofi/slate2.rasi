@@ -2,11 +2,12 @@
   background-color: #3D0814;
   text-color: #ffffff;
   spacing: 0;
-  width: 25%;
+  width: 15%;
+  height: 22%;
 }
 
 window {
-    border-radius:15px;
+  border-radius:15px;
 }
 
 inputbar {
@@ -23,11 +24,11 @@ textbox {
   background-color: #B85C48;
   border: 0 0 1px 0;
   border-color: #282C33;
-  padding: 8px 16px;
+  padding: 16px;
 }
 
 entry {
-  padding: 16px;
+  padding: 16px 6px 0px 0px;
 }
 
 listview {

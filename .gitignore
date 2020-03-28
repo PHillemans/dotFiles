@@ -1,2 +1,2 @@
-*/bundle
-*/node-modules
+!/bundle
+!/node-modules

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-res=$(echo "lock;logout;suspend;restart;shutdown" | rofi -sep ";" -dmenu -p "power:" -theme ~/.config/rofi/slate.rasi)
+res=$(echo "lock;logout;suspend;restart;shutdown" | rofi -sep ";" -dmenu -p "Pwr:" -theme ~/.config/rofi/slate2.rasi)
 
 if [ $res = "lock" ]; then
     # Desktop
