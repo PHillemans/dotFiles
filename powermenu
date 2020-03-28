@@ -3,7 +3,11 @@
 res=$(echo "lock;logout;suspend;restart;shutdown" | rofi -sep ";" -dmenu -p "power:" -theme ~/.config/rofi/slate.rasi)
 
 if [ $res = "lock" ]; then
+    # Desktop
     betterlockscreen -l
+
+    # laptop
+    # i3lock -i ~/Pictures/fighterjet.png
 fi
 if [ $res = "logout" ]; then
     i3-msg exit
