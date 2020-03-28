@@ -43,4 +43,5 @@ After having done these changes, feel free to run the install script
 (just copies the files into .config so be careful) run:
 
 ``` bash
-./install.sh```
+./install.sh
+
