@@ -11,7 +11,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "copying dotfiles to config directory"
-cp -rf ./* ~/.config
+rsync -av --progress ./* ~/ --exclude="readme.md" --exclude="install.sh" --exclude="updateRepo.sh" --exclude=".git" --exclude=".gitignore"
 
 rm ~/install.sh
 rm ~/updateRepo.sh
