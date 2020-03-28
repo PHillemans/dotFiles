@@ -1,6 +1,6 @@
-/* vim:ft=css */
+/* vim:ft=css*/
 *{
-  background-color: #b85c48;
+  background-color: #3D0814;
   text-color: #ffffff;
   spacing: 0;
   width: 25%;
@@ -21,7 +21,7 @@ prompt {
 }
 
 textbox {
-  background-color: #2e343f;
+  background-color: #B85C48;
   border: 0 0 1px 0;
   border-color: #282C33;
   padding: 8px 16px;

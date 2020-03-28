@@ -1,0 +1,20 @@
+#!/bin/bash
+
+res=$(echo "lock;logout;suspend;restart;shutdown" | rofi -sep ";" -dmenu -p "power:" -theme ~/.config/rofi/slate.rasi)
+
+if [ $res = "lock" ]; then
+    betterlockscreen -l
+fi
+if [ $res = "logout" ]; then
+    i3-msg exit
+fi
+if [ $res = "suspend" ]; then
+    i3lock -i ~/Pictures/index.png && systemctl suspend
+fi
+if [ $res = "restart" ]; then
+    systemctl reboot
+fi
+if [ $res = "shutdown" ]; then
+    systemctl poweroff
+fi
+exit 0
