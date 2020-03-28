@@ -17,4 +17,4 @@ rm ~./config/install.sh
 
 nvim +PlugInstall +:qa!
 
-echo "uncomment all laptop parts for desktop and other way arround i3/polybar/powermenu"
+echo "uncomment all laptop parts for desktop and other way around i3/polybar/powermenu"
