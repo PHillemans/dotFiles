@@ -10,6 +10,7 @@ Plug 'blerins/flattown'
 Plug 'mopp/mopkai.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'sainnhe/edge'
+Plug 'jaredgorski/spacecamp'
 
 "navigation
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
@@ -30,7 +31,7 @@ call plug#end()
 
 "theme
 syntax enable
-colorscheme edge
+colorscheme spacecamp
 
 set termguicolors
 set noerrorbells
