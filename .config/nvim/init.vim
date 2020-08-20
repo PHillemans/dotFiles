@@ -25,14 +25,15 @@ Plug 'mhinz/vim-signify'
 
 "language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nelsyeung/twig.vim'
 
 call plug#end()
 
 
 "theme
 syntax enable
-colorscheme spacecamp
-
+colorscheme nord
+let g:lightline = { 'colorscheme': 'nord' }
 set termguicolors
 set noerrorbells
 set background=dark
@@ -40,7 +41,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set nu
+set rnu
 set nowrap
+set noshowmode
 
 " for CoC
 set hidden
@@ -54,6 +57,8 @@ set signcolumn=yes
 let mapleader = " "
 
 "remappings
+nnoremap <leader>; :tabnext<CR>
+nnoremap <leader>a :tabprev<CR>
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -71,4 +76,19 @@ nnoremap <silent> <Leader>pv :NERDTreeFind<CR>
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
 
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--reverse'
+" Do fzf within files without reading filenames
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
+
 source ~/.config/nvim/coc.vim
+let g:coc_disable_startup_warning = 1
+
+command! LightlineReload call LightlineReload()
+
+function! LightlineReload()
+  call lightline#init()
+  call lightline#colorscheme()
+  call lightline#update()
+endfunction
