@@ -15,22 +15,29 @@ Plug 'sainnhe/edge'
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'mileszs/ack.vim'
 
 "others
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-commentary'
 Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
 
 "language
+Plug 'neovim/nvim-lspconfig'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'junegunn/goyo.vim'
+Plug 'masukomi/vim-markdown-folding'
+Plug 'reedes/vim-pencil'
 
 call plug#end()
 
 
 "theme
 syntax enable
-colorscheme edge
+colorscheme nord
 
 set termguicolors
 set noerrorbells
@@ -39,7 +46,12 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set nu
+set rnu
 set nowrap
+set scrolloff=5
+
+"LSP
+lua require'nvim_lsp'.tsserver.setup{}
 
 " for CoC
 set hidden
