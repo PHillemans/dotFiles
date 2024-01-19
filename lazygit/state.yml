@@ -1,0 +1,67 @@
+lastupdatecheck: 0
+recentrepos:
+- /home/pepijnhillemans/fe-projects/aurora/aurora-core
+- /home/pepijnhillemans/fe-projects/campaigns-frontend
+- /home/pepijnhillemans/fe-projects/aurora/aurora-static
+- /home/pepijnhillemans/fe-projects/pages-frontend
+- /home/pepijnhillemans/knutselen/tiptap
+- /home/pepijnhillemans/knutselen/tiptap-pep
+- /home/pepijnhillemans/fe-projects/product-web-personalization
+- /home/pepijnhillemans/fe-projects/bulkemail-frontend
+- /home/pepijnhillemans/fe-projects/urlshortener-frontend
+- /home/pepijnhillemans/fe-projects/domainvalidation-component
+- /home/pepijnhillemans/fe-projects/mta-vector-config
+- /home/pepijnhillemans/knutselen/requestTester
+- /home/pepijnhillemans/fe-projects/cm-vue-template
+- /home/pepijnhillemans/fe-projects/pages-components
+- /home/pepijnhillemans/fe-projects/aurora/aurora-dls-frontend
+- /home/pepijnhillemans/fe-projects/cicd-templates
+- /home/pepijnhillemans/fe-projects/pages-components-2
+- /home/pepijnhillemans/fe-projects/addressbook-frontend
+startuppopupversion: 5
+customcommandshistory:
+- q
+- "1"
+- w
+- git pull origin develop
+- Q
+- git fetch
+- git rm \;
+- git rm ;
+- '!rm ./src/dist'
+- git resore ./
+- git restore ./
+- git reset --hard origin/feature/carousels
+- qa
+- git restore /.
+- git restore.
+- git restore .
+- git restore
+- git reset --hard HEAD
+- git reset --hard origin/feature/#186-replace-statistics-component
+- git reset --hard origin/feature/#186-replace-statistic-component
+- git resotre ./
+- git reset --hard origin/feature/#152-Redesign-Email-Campaign-Item
+- git restore /
+- git restore ./src/app/routes/campaign-editor/mobile-message-preview/mobile-message-preview.ts
+- git restore ./src/app/routes/campaign-editor/mobile-message-preview/mobile-message-preview.component.ts
+- git restore ./src/app/routes/campaign-editor/message-composer-wrapper/message-composer-wrapper.component.ts
+- git restore ./src/Router.ts
+- git restore ./src/plugins/Router.ts
+- git restore ./sinks/send_to_elastic.yaml
+- git resotre
+- git restore ./index.htmnl
+- git restore ./index.html
+- git restore ./src/index.html
+- git restore ./src/app/routes/campaign-editor/channel-selector/channel-selector.component.ts
+- 'git restore '
+- git restore yarn.lock
+- git restore ./src/app/mock-domains
+- git restore ./src/app
+- git restore ./yarn.lock
+- git pull
+- git restore ./gulp-tasks/gulpfile-build.js
+- git restore ./src/app/components/widget
+- git restore ./modules/webpersonalization-microfrontend/src/app/routes
+- rm src/js/aurora-webcomponents/src/shared/tiptap/plugins/wizardPlaceholder.ts
+hidecommandlog: false
