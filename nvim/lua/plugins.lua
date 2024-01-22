@@ -1,26 +1,37 @@
-vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-return require('packer').startup(function()
-    use 'wbthomason/packer.nvim'
+return require('lazy').setup({
+    'wbthomason/packer.nvim',
 
-    use 'navarasu/onedark.nvim'
-    use 'Th3Whit3Wolf/one-nvim'
-    use 'olimorris/onedarkpro.nvim'
-          
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    'navarasu/onedark.nvim',
+    'Th3Whit3Wolf/one-nvim',
+    'olimorris/onedarkpro.nvim',
+      
+    { 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate' },
 
-    use {
+    {
         'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+        dependencies = { 'nvim-lua/plenary.nvim' }
+    },
 
-    use { 'nvim-telescope/telescope-file-browser.nvim' }
+    'nvim-telescope/telescope-file-browser.nvim',
 
-    use 'nvim-telescope/telescope-ui-select.nvim'
+    'nvim-telescope/telescope-ui-select.nvim',
 
-    use {
+    {
         "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim",
+        dependencies = {"nvim-lua/plenary.nvim"},
         config = function()
             require("todo-comments").setup {
                 -- your configuration comes here
@@ -28,51 +39,49 @@ return require('packer').startup(function()
                 -- refer to the configuration section below
             }
         end
-    }
+    },
 
-    use {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
-    }
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
 
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-nvim-lsp'
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-nvim-lsp',
 
-    use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
 
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
 
-    use {
+    {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
+        dependencies = { 'kyazdani42/nvim-web-devicons', optional = true }
+    },
 
-    use {
+    {
         'numToStr/Comment.nvim',
         config = function()
             require'Comment'.setup()
         end
-    }
+    },
 
-    use {
+    {
         'folke/trouble.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
+        dependencies = 'kyazdani42/nvim-web-devicons',
         config = function()
             require("trouble").setup{mode = "document_diagnostics"}
         end
-    }
+    },
 
-    use 'tpope/vim-fugitive'
+    'tpope/vim-fugitive',
 
-    use 'kdheepak/lazygit.nvim'
+    'kdheepak/lazygit.nvim',
 
-    use 'numToStr/FTerm.nvim'
+    'numToStr/FTerm.nvim',
 
-    use {
+    {
         'ahmedkhalf/project.nvim',
         config = function()
             print('starting project')
@@ -82,5 +91,5 @@ return require('packer').startup(function()
             }
         end
     }
-end)
+})
 
