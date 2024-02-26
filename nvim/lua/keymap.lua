@@ -1,4 +1,6 @@
-function set_keymap(mode, keymap, action)
+local vim = vim
+
+local function set_keymap(mode, keymap, action)
     vim.api.nvim_set_keymap(mode, keymap, action, {noremap = true})
 end
 
@@ -12,7 +14,7 @@ set_keymap('n', '<C-f>', ':Telescope live_grep<CR>')
 set_keymap('n', '<C-p>', ':Telescope find_files<CR>')
 set_keymap('n', '<leader>nc', ':Telescope colorscheme<CR>')
 set_keymap('n', '<C-b>', ':Telescope projects<CR>')
-set_keymap('n', '<leader>lg', ':LazyGit<CR>')
+set_keymap('n', '<leader>z', ':ZenMode<CR>')
 
 -- Terminal
 -- set_keymap('t', '<Esc>', '<C-\\><C-n>')

@@ -1,2 +1,5 @@
 bundle/**
 !/node-modules
+
+lazygit/**
+lazy-lock.json

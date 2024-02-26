@@ -1,37 +1,76 @@
+local vim = vim
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 return require('lazy').setup({
-    'wbthomason/packer.nvim',
+    'tpope/vim-sleuth',
 
-    'navarasu/onedark.nvim',
-    'Th3Whit3Wolf/one-nvim',
-    'olimorris/onedarkpro.nvim',
-      
-    { 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate' },
+    {
+        'olimorris/onedarkpro.nvim',
+        priority = 1001
+    },
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1002,
+        opts = {}
+    },
+
+    {
+        'nvim-treesitter/nvim-treesitter',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects'
+        },
+        build = ':TSUpdate',
+        config = function()
+            require("ts-config")
+        end
+    },
 
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        event = "VeryLazy",
+        branch = "0.1.x",
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+
+            'nvim-telescope/telescope-file-browser.nvim',
+
+            'nvim-telescope/telescope-ui-select.nvim',
+        },
+        config = function()
+            require('tele-config')
+        end
     },
 
-    'nvim-telescope/telescope-file-browser.nvim',
-
-    'nvim-telescope/telescope-ui-select.nvim',
+    {
+        "folke/zen-mode.nvim",
+        cmd = "ZenMode",
+        opts = {
+            window = {
+                backdrop = 0.75;
+                options = {
+                    number = false
+                }
+            }
+        }
+    },
 
     {
         "folke/todo-comments.nvim",
-        dependencies = {"nvim-lua/plenary.nvim"},
+        event = "VeryLazy",
+        dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("todo-comments").setup {
                 -- your configuration comes here
@@ -41,29 +80,63 @@ return require('lazy').setup({
         end
     },
 
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
+    {
+        "neovim/nvim-lspconfig",
+        dependencies = {
+            { "williamboman/mason.nvim", config = true },
+            "williamboman/mason-lspconfig.nvim",
 
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-nvim-lsp',
+            { 'j-hui/fidget.nvim', opts = {} },
 
-    'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
+            { "folke/neodev.nvim", opts = {} },
+        },
+        config = function()
+            require("lsp-config")
+        end
+    },
 
-    'hrsh7th/cmp-cmdline',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
+    {
+        'hrsh7th/nvim-cmp',
+        event = 'InsertEnter',
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+
+            'hrsh7th/cmp-cmdline',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+        },
+        config = function()
+            require'cmp-config'
+        end
+    },
+
+    {
+        'lewis6991/gitsigns.nvim',
+        event = 'VeryLazy',
+        opts = {
+            current_line_blame = true
+        }
+    },
 
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'kyazdani42/nvim-web-devicons', optional = true }
+        event = 'VeryLazy',
+        dependencies = { 'nvim-tree/nvim-web-devicons', optional = true },
+        opts = {
+            options = {
+                icons_enabled = false,
+                globalstatus = true
+            }
+        }
     },
 
     {
         'numToStr/Comment.nvim',
         config = function()
-            require'Comment'.setup()
+            require 'Comment'.setup()
         end
     },
 
@@ -71,25 +144,26 @@ return require('lazy').setup({
         'folke/trouble.nvim',
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function()
-            require("trouble").setup{mode = "document_diagnostics"}
+            require("trouble").setup { mode = "document_diagnostics" }
         end
     },
 
-    'tpope/vim-fugitive',
-
-    'kdheepak/lazygit.nvim',
-
-    'numToStr/FTerm.nvim',
+    {
+        'kdheepak/lazygit.nvim',
+        keys = {
+            { '<leader>lg', ':LazyGit<CR>' }
+        }
+    },
 
     {
-        'ahmedkhalf/project.nvim',
+        'numToStr/FTerm.nvim',
+        lazy = true
+    },
+
+    {
+        "ahmedkhalf/project.nvim",
         config = function()
-            print('starting project')
-            require('project_nvim').setup{
-                detection_methods = { "lsp", "pattern" },
-                patterns = { ".git", "package.json" }
-            }
+            require("project_nvim").setup{}
         end
     }
 })
-
