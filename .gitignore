@@ -1,5 +1,5 @@
 bundle/**
 !/node-modules
 
-lazygit/**
+lazygit/state.yml
 lazy-lock.json
