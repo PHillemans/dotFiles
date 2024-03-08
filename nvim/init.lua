@@ -44,7 +44,7 @@ vim.g.netrw_winsize = 25
 
 local colorscheme = 'onedark_vivid'
 
-if math.random(100) % 2 == 0 then
+if math.random(os.time(), os.time() * 2) % 2 == 0 then
     colorscheme = 'tokyonight'
 end
 

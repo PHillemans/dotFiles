@@ -29,7 +29,7 @@ local on_attach = function(_, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>Telescope lsp_references theme=dropdown<CR>', opts)
 end
 
 
@@ -46,8 +46,13 @@ local servers = {
             }
         }
     },
-    tsserver = {},
-    rust_analyzer = { cmd = { "rustup", "run", "stable", "rust-analyzer" } },
+    -- tsserver = {},
+    rust_analyzer = {
+        cmd = { "rustup", "run", "stable", "rust-analyzer" },
+        checkOnSave = {
+            command = "clippy"
+        }
+    },
     eslint = {},
     omnisharp = {},
     angularls = {},
