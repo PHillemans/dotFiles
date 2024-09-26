@@ -14,6 +14,22 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 return require('lazy').setup({
+    {
+        "kndndrj/nvim-dbee",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+        build = function()
+            -- Install tries to automatically detect the install method.
+            -- if it fails, try calling it with one of these parameters:
+            --    "curl", "wget", "bitsadmin", "go"
+            require("dbee").install()
+        end,
+        config = function()
+            require("dbee").setup( --[[optional config]])
+        end,
+    },
+
     'tpope/vim-sleuth',
 
     {
@@ -67,7 +83,7 @@ return require('lazy').setup({
         cmd = "ZenMode",
         opts = {
             window = {
-                backdrop = 0.75;
+                backdrop = 0.75,
                 options = {
                     number = false
                 }
@@ -94,9 +110,9 @@ return require('lazy').setup({
             { "williamboman/mason.nvim", config = true },
             "williamboman/mason-lspconfig.nvim",
 
-            { 'j-hui/fidget.nvim', opts = {} },
+            { 'j-hui/fidget.nvim',       opts = {} },
 
-            { "folke/neodev.nvim", opts = {} },
+            { "folke/neodev.nvim",       opts = {} },
         },
         config = function()
             require("lsp-config")
@@ -117,7 +133,7 @@ return require('lazy').setup({
             'hrsh7th/cmp-path',
         },
         config = function()
-            require'cmp-config'
+            require 'cmp-config'
         end
     },
 
@@ -149,6 +165,28 @@ return require('lazy').setup({
     },
 
     {
+        'stevearc/conform.nvim',
+        event = { "BufWritePre" },
+        cmd = { "ConformInfo" },
+        keys = {
+            {
+                -- Reformat in insert mode
+                "<leader>cf",
+                function()
+                    require("conform").format({ async = true, lsp_fallback = true })
+                end,
+                mode = "",
+                desc = "Format buffer",
+            },
+        },
+        opts = {
+            formatters_by_ft = {
+                svelte = { "svelte" }
+            }
+        }
+    },
+
+    {
         'folke/trouble.nvim',
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function()
@@ -171,7 +209,7 @@ return require('lazy').setup({
     {
         "ahmedkhalf/project.nvim",
         config = function()
-            require("project_nvim").setup{}
+            require("project_nvim").setup {}
         end
     }
 })

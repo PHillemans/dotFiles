@@ -2,13 +2,13 @@ local lsp = require 'lspconfig'
 
 require "mason".setup()
 require "mason-lspconfig".setup {
-    ensure_installed = { "lua_ls", "omnisharp", "vuels" }
+    ensure_installed = { "lua_ls", "omnisharp", "tsserver", "eslint", "svelte" }
 }
 
 require("neodev").setup({})
 
 local on_attach = function(_, bufnr)
-    -- print('capabilities', vim.inspect(client.server_capabilities))
+    print('attached to buffer', bufnr)
     -- Enable completion triggered by <c-x><c-o>
     local opts = {
         noremap = true,
@@ -37,6 +37,10 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local servers = {
+    gopls = {},
+    zls = {},
+    pyright = {},
+    tailwindcss = {},
     yamlls = {
         settings = {
             yaml = {
@@ -46,7 +50,7 @@ local servers = {
             }
         }
     },
-    -- tsserver = {},
+    tsserver = {},
     rust_analyzer = {
         cmd = { "rustup", "run", "stable", "rust-analyzer" },
         checkOnSave = {
@@ -55,15 +59,7 @@ local servers = {
     },
     eslint = {},
     omnisharp = {},
-    angularls = {},
-    volar = {
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-        init_options = {
-            typescript = {
-                tsdk = "/home/pepijnhillemans/.nvm/versions/node/v18.12.1/bin/typescript-language-server"
-            }
-        }
-    },
+    svelte = {},
     emmet_language_server = {},
     lua_ls = {
         settings = {
